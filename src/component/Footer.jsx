@@ -4,7 +4,9 @@ import React, { useContext, useEffect, useState } from "react";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import Spacer from "./Spacer";
 import { Box, Button, Container, Divider, Grid, IconButton, Stack, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { AppContext } from "../App";
+import { contact } from "../common/data.mjs";
 import { Fonts, colors } from "../common/theme.mjs";
 
 export const FooterItem = (props) => {
@@ -16,7 +18,7 @@ export const FooterItem = (props) => {
             {/*</IconButton>*/}
             <Stack>
                 <Typography sx={{ color: 'white', fontSize: isMobile ? '14px' : '18px', fontFamily: Fonts.AppSemiBold }}>{props.title}</Typography>
-                <Typography sx={{ color: 'white', fontSize: isMobile ? '12px' : '14px', fontFamily: Fonts.AppMedium }}>{props.desc}</Typography>
+                <Typography sx={{ color: 'white', fontSize: isMobile ? '12px' : '14px', fontFamily: Fonts.AppMedium, width: '50%' }}>{props.desc}</Typography>
             </Stack>
         </Stack>
     )
@@ -38,11 +40,12 @@ const FooterButton = (props) => {
 
 export const ItemsContainer = () => {
     const { isMobile } = useContext(AppContext);
+    const { t } = useTranslation();
     return (
         <Stack spacing={3} sx={{ mt: isMobile ? 3 : 0 }}>
-            <FooterItem icon={<PhoneInTalkIcon sx={{ color: 'white', fontSize: '30px' }} />} title={"Telefon belgi"} desc={"+99362737222"} />
-            <FooterItem icon={<MailOutlinedIcon sx={{ color: 'white', fontSize: '30px' }} />} title={"Elektron poçta"} desc={"saglykoty@gmail.com"} />
-            <FooterItem icon={<RoomOutlinedIcon sx={{ color: 'white', fontSize: '30px' }} />} title={"Salgymyz"} desc={"Ashgabat shaher, Arcabil, 100 j"} />
+            <FooterItem icon={<PhoneInTalkIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("phone")} desc={contact.phone} />
+            <FooterItem icon={<MailOutlinedIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("email")} desc={contact.email} />
+            <FooterItem icon={<RoomOutlinedIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("address")} desc={t(contact.address)} />
 
         </Stack>
     )
@@ -67,6 +70,7 @@ export const SocialMediaContainer = (props) => {
 
 const Footer = (props) => {
     const { isMobile } = useContext(AppContext);
+    const { t } = useTranslation();
     return (
         <Box sx={{ bgcolor: colors.black, pt: 4, pb: 4 }}>
             <Container fixed>
@@ -81,11 +85,11 @@ const Footer = (props) => {
                         {
                             isMobile ? null :
                                 <Stack spacing={3} sx={{ mt: isMobile ? 3 : 0 }}>
-                                    <FooterButton title={"Baş sahypa"} />
-                                    <FooterButton title={"Dermanlar"} />
-                                    <FooterButton title={"Biz barada"} />
-                                    <FooterButton title={"Habarlaşmak"} />
-                                    <FooterButton title={"Hyzmatlar"} />
+                                    <FooterButton title={t("home_page")} />
+                                    <FooterButton title={t("services")} />
+                                    <FooterButton title={t("about_us")} />
+                                    <FooterButton title={t("contact_us")} />
+                                    <FooterButton title={t("medicine")} />
                                 </Stack>
                         }
                     </Grid>
@@ -97,7 +101,7 @@ const Footer = (props) => {
             <Container>
                 <Grid container spacing={3} alignItems={'center'} justifyContent={'space-between'}>
                     <Grid item xs={12} sm={12} md={8}>
-                        <Typography sx={{ color: 'white', fontFamily: Fonts.AppLight, fontSize: '14px' }}>© 2022 - 2023 Ähli hukuklar goragly</Typography>
+                        <Typography sx={{ color: 'white', fontFamily: Fonts.AppLight, fontSize: '14px' }}>© 2022 - 2023 {t('all_rights')}</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={4}>
                         <SocialMediaContainer />

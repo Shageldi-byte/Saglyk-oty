@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import Spacer from "./Spacer";
 import { Box, Grid, Stack, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { AppContext } from "../App";
 import { Fonts, colors } from "../common/theme.mjs";
 
 const AboutItem = () => {
     const { isMobile } = useContext(AppContext);
+    const { t } = useTranslation();
     return (
         <div>
             <Grid container alignItems={'center'} direction={isMobile ? 'column-reverse' : 'row'}>
@@ -13,10 +15,13 @@ const AboutItem = () => {
                     <Stack spacing={2}>
                         <Spacer count={isMobile ? 4 : 0} />
                         <Typography sx={{ fontFamily: Fonts.AppSemiBold, fontSize: isMobile ? '20px' : '30px', color: colors.black }}>
-                            Dermanhana barada
+                            {t('about_us')}
                         </Typography>
                         <Typography sx={{ fontFamily: Fonts.AppMedium, fontSize: isMobile ? '12px' : '16px', color: colors.black }}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {t('about-1')}
+                        </Typography>
+                        <Typography sx={{ fontFamily: Fonts.AppMedium, fontSize: isMobile ? '12px' : '16px', color: colors.black }}>
+                            {t('about-2')}
                         </Typography>
                     </Stack>
                 </Grid>
@@ -27,6 +32,12 @@ const AboutItem = () => {
                     </Stack>
                 </Grid>
             </Grid>
+            <Typography sx={{ fontFamily: Fonts.AppMedium, fontSize: isMobile ? '12px' : '16px', color: colors.black, mt: 5 }}>
+                {t('about-3')}
+            </Typography>
+            <Typography sx={{ fontFamily: Fonts.AppMedium, fontSize: isMobile ? '12px' : '16px', color: colors.black, mt: 5 }}>
+                {t('about-4')}
+            </Typography>
         </div>
     )
 }

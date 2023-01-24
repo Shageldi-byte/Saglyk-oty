@@ -2,6 +2,7 @@ import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { Stack, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { AppContext } from "../App";
 import { Fonts, colors } from "../common/theme.mjs";
 
@@ -15,10 +16,11 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 export default function QuiltedImageList() {
     const { isMobile } = React.useContext(AppContext);
+    const { t } = useTranslation();
     return (
         <Stack spacing={3}>
             <Typography sx={{ fontFamily: Fonts.AppSemiBold, fontSize: isMobile ? '20px' : '30px', color: colors.black }}>
-                Gallereýa
+                {t('gallery')}
             </Typography>
             <ImageList
                 sx={{ width: '100%', height: 'auto' }}
@@ -53,32 +55,32 @@ const itemData = [
         title: 'Burger',
     },
     {
-        img: 'gallery (3).webp',
+        img: 'gallery (3).jpg',
         title: 'Camera',
     },
     {
-        img: 'gallery (5).jpg',
+        img: 'gallery (4).jpg',
         title: 'Coffee',
         cols: 2,
     },
     {
-        img: 'gallery (7).jpg',
+        img: 'gallery (5).jpg',
         title: 'Hats',
         cols: 2,
     },
     {
-        img: 'gallery (8).jpg',
+        img: 'gallery (6).jpg',
         title: 'Honey',
         author: '@arwinneil',
         rows: 2,
         cols: 2,
     },
     {
-        img: 'gallery (10).jpg',
+        img: 'gallery (7).jpg',
         title: 'Basketball',
     },
     {
-        img: 'gallery (11).jpg',
+        img: 'gallery (10).jpg',
         title: 'Fern',
     },
     {
@@ -88,15 +90,15 @@ const itemData = [
         cols: 2,
     },
     {
-        img: 'gallery (14).jpg',
+        img: 'gallery (13).jpg',
         title: 'Tomato basil',
     },
     {
-        img: 'gallery (1).webp',
+        img: 'gallery (15).jpg',
         title: 'Sea star',
     },
     {
-        img: 'gallery (1).png',
+        img: 'gallery (17).jpg',
         title: 'Bike',
         cols: 2,
     },

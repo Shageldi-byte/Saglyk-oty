@@ -6,7 +6,9 @@ import React, { useContext } from "react";
 import Spacer from "./Spacer";
 import { Card, CardActionArea, CardContent, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { AppContext } from "../App.js";
+import { healthInfo } from "../common/data.mjs";
 import { Fonts, colors } from "../common/theme.mjs";
 
 const items = [
@@ -22,8 +24,9 @@ const items = [
 ]
 
 const InfoItem = (props) => {
+    const { t } = useTranslation();
     return (
-        <Stack alignItems={'center'} justifyContent={'center'}>
+        <Stack alignItems={'center'} justifyContent={'center'} onClick={() => alert(t(props.item.desc))}>
             <Stack alignItems={'center'} justifyContent={'center'} sx={{
                 backgroundColor: colors.primary,
                 borderRadius: '50%',
@@ -31,21 +34,24 @@ const InfoItem = (props) => {
                 padding: '5px',
                 zIndex: 1,
             }}>
-                <img src={`images/${props.item.img}`} alt="info"
+                <img src={props.item.image} alt="info"
                     style={{
                         width: '120px',
                         height: '120px',
+                        borderRadius: '50%',
                     }} />
             </Stack>
-            <Card sx={{ height: '250px', marginTop: '-50px', zIndex: -1, position: 'relative', borderRadius: '22px', bgcolor: colors.solid }} key={props.key} elevation={0}>
+            <Card
+
+                sx={{ height: '250px', width: '100%', marginTop: '-50px', zIndex: -1, position: 'relative', borderRadius: '22px', bgcolor: colors.solid }} key={props.key} elevation={0}>
                 <CardActionArea>
                     <CardContent>
                         <Stack alignItems={'center'} justifyContent={'center'} spacing={2} sx={{ height: '250px' }}>
                             <Typography sx={{ textAlign: 'center', fontFamily: Fonts.AppSemiBold, fontSize: '16px' }}>
-                                {props.item.title_tm}
+                                {t(props.item.title)}
                             </Typography>
                             <center>
-                                <AppButton title={"Giňişleýin"} variant={'outlined'} />
+                                {/* <AppButton title={"Giňişleýin"} variant={'outlined'} /> */}
                             </center>
                         </Stack>
                     </CardContent>
@@ -57,15 +63,16 @@ const InfoItem = (props) => {
 
 const InfoSection = () => {
     const { isMobile } = useContext(AppContext);
+    const { t } = useTranslation();
     return (
         <Stack>
             <Typography sx={{ fontFamily: Fonts.AppSemiBold, fontSize: isMobile ? '20px' : '30px', color: colors.black }}>
-                Saglyk barada peýdaly maslahatlar
+                {t('about_healthy')}
             </Typography>
             <Spacer count={2} />
             <OwlCarousel className='owl-theme' loop autoplay={true} margin={10} dots={true} items={isMobile ? 1 : 3}>
                 {
-                    items.map((item, index) => {
+                    healthInfo.map((item, index) => {
                         return (
                             <InfoItem item={item} className={'item'} key={`info-${index}`} />
                         )

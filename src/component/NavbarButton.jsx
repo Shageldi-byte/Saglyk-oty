@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AppContext } from "../App.js";
 import { Fonts, colors } from "../common/theme.mjs";
+import {useTranslation} from "react-i18next";
 
 export const active = {
     color: 'primary.main',
@@ -20,14 +22,18 @@ export const passive = {
 const NavbarButton = (props) => {
     const location = useLocation();
     const [isActive, setActive] = useState(true);
+    const { setLoading } = useContext(AppContext);
+
+    const {t} = useTranslation();
 
     useEffect(() => {
         setActive(location.pathname === props.link);
+        window.scrollTo(0, 0);
     }, [location]);
     const navigator = useNavigate();
     return (
         <Button sx={{ ...isActive ? active : passive }} onClick={() => navigator(props.link)}>
-            {props.label}
+            {t(props.label)}
         </Button>
     )
 }

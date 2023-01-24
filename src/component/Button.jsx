@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { AppContext } from "../App.js";
 import { Fonts, colors } from "../common/theme.mjs";
 
@@ -35,10 +36,11 @@ const styles = {
 
 const AppButton = (props) => {
     const { isMobile } = useContext(AppContext);
+    const { t } = useTranslation();
     return (
         <Stack direction={'row'}>
-            <Button variant={props.variant} sx={{ ...styles[props.variant], fontSize: isMobile ? '12px' : '14px' }}>
-                {props.title}
+            <Button variant={props.variant} onClick={() => props.onClick ? props.onClick() : {}} sx={{ ...styles[props.variant], fontSize: isMobile ? '12px' : '14px' }}>
+                {t(props.title)}
             </Button>
         </Stack>
     )

@@ -28,18 +28,25 @@ export const AppContext = createContext({});
 
 function App() {
     const wwidth = useWidth();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [appLanguage,setAppLanguage] = useState('ru');
     const checker = (w) => {
         return ["xs", "sm"].includes(w);
     }
     const [isMobile, setIsMobile] = useState(checker(wwidth));
 
     useEffect(() => {
+        setTimeout(() => setLoading(false), 3000)
+    }, []);
+
+    useEffect(() => {
         setIsMobile(checker(wwidth))
     }, [wwidth])
     return (
         <AppContext.Provider value={{
-            isMobile: isMobile
+            isMobile: isMobile,
+            setLoading:setLoading,
+            appLanguage:appLanguage
         }}>
             {
                 loading ?

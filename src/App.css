@@ -1,46 +1,46 @@
 @font-face {
     font-family: 'AppBlack';
-    src: url(assets/fonts/Poppins-Black.ttf);
+    src: url(assets/fonts/Montserrat-Black.ttf);
 }
 
 @font-face {
     font-family: 'AppBold';
-    src: url(assets/fonts/Poppins-Bold.ttf);
+    src: url(assets/fonts/Montserrat-Bold.ttf);
 }
 
 @font-face {
     font-family: 'AppExtraBold';
-    src: url(assets/fonts/Poppins-ExtraBold.ttf);
+    src: url(assets/fonts/Montserrat-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: 'AppExtraLight';
-    src: url(assets/fonts/Poppins-ExtraLight.ttf);
+    src: url(assets/fonts/Montserrat-ExtraLight.ttf);
 }
 
 @font-face {
     font-family: 'AppLight';
-    src: url(assets/fonts/Poppins-Light.ttf);
+    src: url(assets/fonts/Montserrat-Light.ttf);
 }
 
 @font-face {
     font-family: 'AppMedium';
-    src: url(assets/fonts/Poppins-Medium.ttf);
+    src: url(assets/fonts/Montserrat-Medium.ttf);
 }
 
 @font-face {
     font-family: 'AppRegular';
-    src: url(assets/fonts/Poppins-Regular.ttf);
+    src: url(assets/fonts/Montserrat-Regular.ttf);
 }
 
 @font-face {
     font-family: 'AppSemiBold';
-    src: url(assets/fonts/Poppins-SemiBold.ttf);
+    src: url(assets/fonts/Montserrat-SemiBold.ttf);
 }
 
 @font-face {
     font-family: 'AppThin';
-    src: url(assets/fonts/Poppins-Thin.ttf);
+    src: url(assets/fonts/Montserrat-Thin.ttf);
 }
 
 *{
@@ -48,4 +48,39 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.lines-1 {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1; 
+   -webkit-box-orient: vertical;
+}
+
+.lines-2 {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+
+.lines-3 {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3; 
+   -webkit-box-orient: vertical;
+}
+.lines-4 {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 4; /* number of lines to show */
+           line-clamp: 4; 
+   -webkit-box-orient: vertical;
 }

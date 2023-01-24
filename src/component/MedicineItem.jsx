@@ -1,4 +1,5 @@
 import AppButton from "./Button";
+import MedicineInfo from "./MedicineInfo";
 import React, { useContext } from "react";
 import { Card, Stack, Typography } from "@mui/material";
 import { AppContext } from "../App";
@@ -16,7 +17,7 @@ const MedicineItem = (props) => {
                 <Typography sx={{ fontFamily: Fonts.AppMedium, fontSize: isMobile ? '12px' : '14px', color: colors.black, width: isMobile ? '90%' : '70%', textAlign: 'center' }}>
                     {props.item.desc_tm}
                 </Typography>
-                <AppButton title={"Giňişleýin"} variant={'outlined'} />
+                <MedicineInfo item={props.item}/>
             </Stack>
         </Card>
     )

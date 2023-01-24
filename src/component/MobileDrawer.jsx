@@ -1,16 +1,17 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import {Box} from "@mui/system";
-import SyncIcon from '@mui/icons-material/Sync';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
+import Dialog from "@mui/material/Dialog";
+import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import {NavItems} from "./Navbar";
+import Slide from "@mui/material/Slide";
+import SyncIcon from "@mui/icons-material/Sync";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/system";
+import { useLocation } from "react-router-dom";
+import { NavItems } from "./Navbar";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="left" ref={ref} {...props} />;
@@ -27,10 +28,16 @@ export default function MobileDrawer() {
         setOpen(false);
     };
 
+    const location = useLocation();
+
+    React.useEffect(() => {
+        handleClose();
+    }, [location]);
+
     return (
         <div>
             <IconButton color={'primary'} onClick={handleClickOpen}>
-                <MenuIcon/>
+                <MenuIcon />
             </IconButton>
             <Dialog
                 fullScreen
@@ -38,16 +45,16 @@ export default function MobileDrawer() {
                 onClose={handleClose}
                 TransitionComponent={Transition}
             >
-                <Box sx={{p:4}}>
+                <Box sx={{ p: 4 }}>
                     <IconButton
                         edge="start"
                         color="inherit"
                         onClick={handleClose}
                         aria-label="close"
                     >
-                        <CloseIcon/>
+                        <CloseIcon />
                     </IconButton>
-                    <NavItems/>
+                    <NavItems />
                 </Box>
             </Dialog>
         </div>
