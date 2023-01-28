@@ -15,14 +15,14 @@ const Loading = () => {
                 position: 'fixed',
                 zIndex: 10
             }}>
-            <CircularProgress/>
-            {/*<Player*/}
-            {/*    autoplay*/}
-            {/*    loop*/}
-            {/*    src={'/images/loading.json'}*/}
-            {/*    style={{ height: '150px', width: '150px' }}*/}
-            {/*>*/}
-            {/*</Player>*/}
+            {/*<CircularProgress/>*/}
+            <Player
+                autoplay
+                loop={true}
+                src={'/images/load.json'}
+                style={{ height: '750px', width: '750px' }}
+            >
+            </Player>
         </Stack>
     )
 }
