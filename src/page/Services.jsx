@@ -3,18 +3,21 @@ import React from "react";
 import ServiceItem from "../component/ServiceItem";
 import Spacer from "./../component/Spacer";
 import { Stack } from "@mui/material";
+import {useTranslation} from "react-i18next";
+import {services} from "../common/data.mjs";
 
 const Services = () => {
+    const {t}=useTranslation();
     return (
         <div>
             <Spacer count={8} />
-            <PageTitle title={'Biziň hyzmatlarymyz'} desc={"Hyzmatlar bölüminiň telefon belgisi +99362737222 "} />
+            <PageTitle title={t('our_services')} desc={t('about_services')} />
             <Spacer count={4} />
             <Stack spacing={3}>
                 {
-                    new Array(20).fill(0).map(i => {
+                    services.map((item,i) => {
                         return (
-                            <ServiceItem key={`service-${i}`} />
+                            <ServiceItem item={item} key={`service-${i}`} />
                         )
                     })
                 }

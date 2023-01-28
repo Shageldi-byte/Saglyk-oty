@@ -5,6 +5,11 @@ import { Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { AppContext } from "../App";
 import { Fonts, colors } from "../common/theme.mjs";
+import Img, { CloudimageProvider } from 'react-cloudimage-responsive-blur-hash';
+import {Blurhash} from "react-blurhash";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Image from 'rc-image';
+import LazyImage from "./LazyImage";
 
 function srcset(image, size, rows = 1, cols = 1) {
     return {
@@ -13,6 +18,10 @@ function srcset(image, size, rows = 1, cols = 1) {
             }&fit=crop&auto=format&dpr=2 2x`,
     };
 }
+
+const cloudimageConfig = {
+    token: 'demo'
+};
 
 export default function QuiltedImageList() {
     const { isMobile } = React.useContext(AppContext);
@@ -30,13 +39,7 @@ export default function QuiltedImageList() {
                 rowHeight={isMobile ? 121 : 221}
             >
                 {itemData.map((item) => (
-                    <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
-                        <img
-                            {...srcset(`/gallery/${item.img}`, isMobile ? 121 : 221, item.rows, item.cols)}
-                            alt={item.title}
-                            loading="lazy"
-                        />
-                    </ImageListItem>
+                        <LazyImage item={item}/>
                 ))}
             </ImageList>
         </Stack>

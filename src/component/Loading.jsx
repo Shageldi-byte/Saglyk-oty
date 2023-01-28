@@ -1,6 +1,6 @@
 import React from "react";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
-import { Box, Stack, Typography } from "@mui/material";
+import {Box, CircularProgress, Stack, Typography} from "@mui/material";
 
 
 const Loading = () => {
@@ -15,14 +15,14 @@ const Loading = () => {
                 position: 'fixed',
                 zIndex: 10
             }}>
-            <Player
-                autoplay
-                loop
-                src={'/images/loading.json'}
-                style={{ height: '150px', width: '150px' }}
-            >
-            </Player>
-            <Typography>Biraz garaşyň...</Typography>
+            <CircularProgress/>
+            {/*<Player*/}
+            {/*    autoplay*/}
+            {/*    loop*/}
+            {/*    src={'/images/loading.json'}*/}
+            {/*    style={{ height: '150px', width: '150px' }}*/}
+            {/*>*/}
+            {/*</Player>*/}
         </Stack>
     )
 }

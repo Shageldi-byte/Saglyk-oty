@@ -39,7 +39,7 @@ const AppButton = (props) => {
     const { t } = useTranslation();
     return (
         <Stack direction={'row'}>
-            <Button variant={props.variant} onClick={() => props.onClick ? props.onClick() : {}} sx={{ ...styles[props.variant], fontSize: isMobile ? '12px' : '14px' }}>
+            <Button variant={props.variant} onClick={() => props.onClick ? props.onClick() : {}} sx={{ ...styles[props.variant], fontSize: isMobile ? '12px' : '14px', ...props.style }}>
                 {t(props.title)}
             </Button>
         </Stack>

@@ -10,7 +10,7 @@ const AboutUs = () => {
     return (
         <div>
             <Spacer count={8} />
-            <PageTitle title={t('about_us')} desc={"Saglyk oty dermanhanasy"} />
+            <PageTitle title={t('about_us')} desc={t("about_apteka")} />
             <Spacer count={4} />
             <AboutItem />
             <Spacer count={4} />

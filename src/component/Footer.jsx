@@ -43,7 +43,7 @@ export const ItemsContainer = () => {
     const { t } = useTranslation();
     return (
         <Stack spacing={3} sx={{ mt: isMobile ? 3 : 0 }}>
-            <FooterItem icon={<PhoneInTalkIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("phone")} desc={contact.phone} />
+            <FooterItem icon={<PhoneInTalkIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("phone")} desc={contact.phone.join('\n')} />
             <FooterItem icon={<MailOutlinedIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("email")} desc={contact.email} />
             <FooterItem icon={<RoomOutlinedIcon sx={{ color: 'white', fontSize: '30px' }} />} title={t("address")} desc={t(contact.address)} />
 
@@ -55,14 +55,20 @@ export const SocialMediaContainer = (props) => {
     const { isMobile } = useContext(AppContext);
     return (
         <Stack direction={'row'} justifyContent={isMobile ? 'center' : props.isOut ? 'center' : 'flex-end'}>
-            <IconButton size={'small'}>
+            <IconButton size={'small'} onClick={()=>{
+                window.location.href=contact.instagram;
+            }}>
                 <img src={'/images/instagram.svg'} alt={'instagram'} />
             </IconButton>
-            <IconButton size={'small'}>
-                <img src={'/images/youtube.svg'} alt={'youtube'} />
+            <IconButton size={'small'} onClick={()=>{
+                window.location.href=`${contact.icq}`;
+            }}>
+                <img src={'/images/icq.svg'} alt={'youtube'} style={{width:'45px',height:'45px'}}/>
             </IconButton>
-            <IconButton size={'small'}>
-                <img src={'/images/tiktok.svg'} alt={'tiktok'} />
+            <IconButton size={'small'} onClick={()=>{
+                window.location.href=`tel:${contact.imo}`;
+            }}>
+                <img src={'/images/imo.svg'} alt={'tiktok'} style={{width:'45px',height:'45px'}}/>
             </IconButton>
         </Stack>
     )
@@ -101,7 +107,7 @@ const Footer = (props) => {
             <Container>
                 <Grid container spacing={3} alignItems={'center'} justifyContent={'space-between'}>
                     <Grid item xs={12} sm={12} md={8}>
-                        <Typography sx={{ color: 'white', fontFamily: Fonts.AppLight, fontSize: '14px' }}>© 2022 - 2023 {t('all_rights')}</Typography>
+                        <Typography sx={{ color: 'white', fontFamily: Fonts.AppLight, fontSize: '14px' }}>© {new Date().getFullYear()-1} - {new Date().getFullYear()} {t('all_rights')}</Typography>
                     </Grid>
                     <Grid item xs={12} sm={12} md={4}>
                         <SocialMediaContainer />

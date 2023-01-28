@@ -11,6 +11,7 @@ import { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { theme } from "./common/theme.mjs";
 import { Body } from "./component/component.mjs";
+import i18n from "i18next";
 
 export function useWidth() {
     const theme = useTheme();
@@ -39,6 +40,21 @@ function App() {
         setTimeout(() => setLoading(false), 3000)
     }, []);
 
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+        localStorage.setItem('lng',lng);
+        setAppLanguage(lng);
+    };
+
+    useEffect(()=>{
+        let lng=localStorage.getItem('lng');
+        if(typeof lng!=='undefined' && lng!==null && lng!==''){
+            changeLanguage(lng);
+        } else {
+            changeLanguage(appLanguage);
+        }
+    },[])
+
     useEffect(() => {
         setIsMobile(checker(wwidth))
     }, [wwidth])
@@ -46,7 +62,8 @@ function App() {
         <AppContext.Provider value={{
             isMobile: isMobile,
             setLoading:setLoading,
-            appLanguage:appLanguage
+            appLanguage:appLanguage,
+            changeLanguage:changeLanguage
         }}>
             {
                 loading ?

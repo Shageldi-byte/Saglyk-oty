@@ -4,6 +4,8 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { AppContext } from "../App";
 import { Fonts, colors } from "../common/theme.mjs";
+import Image from "mui-image";
+import {Blurhash} from "react-blurhash";
 
 const AboutItem = () => {
     const { isMobile } = useContext(AppContext);
@@ -28,7 +30,12 @@ const AboutItem = () => {
                 <Grid item xs={12} sm={12} md={5}>
                     <Stack alignItems={'center'} justifyContent={'center'} sx={{ width: '100%' }}>
                         <div style={{ width: '250px', height: '300px', zIndex: -1, marginLeft: '100px', transform: 'rotate(13deg)', borderRadius: '22px', backgroundColor: colors.transparent, position: 'absolute' }}></div>
-                        <img src={'/gallery/gallery (2).jpg'} alt={'about'} style={{ width: '60%', height: '300px', borderRadius: '22px', objectFit: 'cover' }} />
+                        <Image
+                            src={'/gallery/gallery (2).jpg'}
+                            showLoading={<Blurhash hash={'LaNKS3_N9FRi9YE0M{NGbtD%NGRj'} style={{ borderRadius: '12px', width: isMobile?'100%':'60%', height: '300px' }}/>}
+                            wrapperStyle={{width: '100%'}}
+                            alt={'about'} style={{ width: isMobile?'100%':'60%', height: '300px', borderRadius: '22px', objectFit: 'cover' }}
+                        />
                     </Stack>
                 </Grid>
             </Grid>
