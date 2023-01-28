@@ -36,9 +36,7 @@ function App() {
     }
     const [isMobile, setIsMobile] = useState(checker(wwidth));
 
-    useEffect(() => {
-        setTimeout(() => setLoading(false), 4500)
-    }, []);
+
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
