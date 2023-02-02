@@ -7,12 +7,15 @@ import QuiltedImageList from "./../component/QuiltedImageList";
 import React, { useEffect, useState } from "react";
 import Slider from "../component/Slider";
 import Spacer from "../component/Spacer";
+import AnimatedBanner from "../component/AnimatedBanner";
 
 const Home = (props) => {
     return (
         <div>
             <Spacer count={8} />
             <Slider />
+            <Spacer count={4} />
+                <AnimatedBanner/>
             <Spacer count={4} />
             <HomeMedicine />
             <Spacer count={4} />

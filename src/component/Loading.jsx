@@ -9,7 +9,7 @@ const Loading = () => {
     const {setLoading} = useContext(AppContext);
     const [ready,setReady]=useState(false);
     function start(){
-        setTimeout(() => setLoading(false), 4500)
+        setTimeout(() => setLoading(false), 6000)
     }
     return (
         <Stack
@@ -34,8 +34,8 @@ const Loading = () => {
                     }
                 }}
                 loop={true}
-                src={'/images/load.json'}
-                style={{ height: '750px', width: '750px' }}
+                src={'/images/comp.json'}
+                style={{ height: ready?'750px':'0px', width: ready?'750px':'0px' }}
             >
             </Player>
         </Stack>
